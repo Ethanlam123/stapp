@@ -20,7 +20,7 @@ start_date = st.sidebar.date_input('Start date', pd.to_datetime('today') - pd.Da
 end_date = st.sidebar.date_input('End date', pd.to_datetime('today'))
 
 # Functions to manipulate tickers
-@st.cache_data
+# @st.cache_data
 def add_ticker():
     if ticker_input:
         with st.spinner('Loading data...'):
@@ -31,7 +31,7 @@ def add_ticker():
     else:
         st.sidebar.warning('Please enter a ticker.')
 
-@st.cache_data
+# @st.cache_data
 def remove_ticker(ticker_to_remove):
     if ticker_to_remove in st.session_state.ticker:
         st.session_state.ticker.remove(ticker_to_remove)
@@ -40,7 +40,7 @@ def remove_ticker(ticker_to_remove):
     else:
         st.sidebar.warning('Ticker not found.')
 
-@st.cache_data(experimental_allow_widgets=True) 
+# @st.cache_data(experimental_allow_widgets=True) 
 def display_stock_data(ticker):
     if ticker in st.session_state.data:
         df = st.session_state.data[ticker]
@@ -49,7 +49,7 @@ def display_stock_data(ticker):
         st.plotly_chart(fig)
         display_custom_plot(df)
 
-@st.cache_data(experimental_allow_widgets=True) 
+# @st.cache_data(experimental_allow_widgets=True) 
 def display_custom_plot(df):
     st.header(f'Custom Data Plot for {selected_ticker}')
     df1 = df.reset_index()
@@ -63,7 +63,7 @@ def display_custom_plot(df):
         fig = px.scatter(df1, x=x_axis, y=y_axis, title=f'{selected_ticker} Scatter Plot')
     st.plotly_chart(fig)
 
-@st.cache_data(experimental_allow_widgets=True) 
+# @st.cache_data(experimental_allow_widgets=True) 
 def display_stock_news(ticker):
     st.header(f'Top News for {ticker}')
     with st.spinner('Loading news...'):
