@@ -5,7 +5,7 @@ import google.generativeai as genai
 with st.sidebar:
     st.title("Gemini API")
     # Set API key
-    api_key = st.text_input("API key")
+    api_key = st.text_input("API key", type="password")
     if api_key:
         genai.configure(api_key=api_key)
     else:
