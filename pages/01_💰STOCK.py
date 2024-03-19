@@ -40,7 +40,7 @@ def remove_ticker(ticker_to_remove):
     else:
         st.sidebar.warning('Ticker not found.')
 
-# @st.cache_data(experimental_allow_widgets=True) 
+@st.cache_data(experimental_allow_widgets=True) 
 def display_stock_data(ticker):
     if ticker in st.session_state.data:
         df = st.session_state.data[ticker]
