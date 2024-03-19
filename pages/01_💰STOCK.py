@@ -40,7 +40,7 @@ def remove_ticker(ticker_to_remove):
     else:
         st.sidebar.warning('Ticker not found.')
 
-@st.cache_data(experimental_allow_widgets=True) 
+# @st.cache_data(experimental_allow_widgets=True) 
 def display_stock_data(ticker):
     if ticker in st.session_state.data:
         df = st.session_state.data[ticker]
@@ -56,7 +56,7 @@ def display_custom_plot(df):
     x_axis = st.selectbox('X-axis', df1.columns, index=0)
     y_axis = st.multiselect('Y-axis', df1.columns, default='Adj Close')
     plot_type = st.radio('Plot Type', ['Line', 'Scatter'])
-
+    
     if plot_type == 'Line':
         fig = px.line(df1, x=x_axis, y=y_axis, title=f'{selected_ticker} Line Plot')
     else:
